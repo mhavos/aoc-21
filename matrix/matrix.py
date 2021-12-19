@@ -75,6 +75,13 @@ class Matrix:
             warnings.warn(f"to turn warnings off, either set matrixcheck to False (this will turn warnings off permanently), or pass a `check=False` kwarg to matrix creation.",
                     category=warnings.Warning)
 
+    def transpose(self):
+        result = Matrix(self.n, self.m, semiring=self.semiring)
+        for r in range(self.n):
+            for s in range(self.m):
+                result[r][s] = self[s][r]
+        return result
+
     def __getitem__(self, key):
         return self.data[key]
 
